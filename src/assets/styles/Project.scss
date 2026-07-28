@@ -1,0 +1,124 @@
+.projects-container {
+  display: flex;
+  flex-direction: column;
+  padding: 5% 10%;
+  text-align: left;
+}
+
+.projects-container .projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 50px;
+}
+
+.projects-container .projects-grid .project {
+  text-align: left;
+  border-radius: 10px;
+  padding: 1rem;
+  border: 1px solid transparent;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &:hover {
+    transform: translateY(-5px);
+    border-color: rgba(80, 0, 202, 0.35);
+    box-shadow: 0 12px 32px rgba(80, 0, 202, 0.12);
+  }
+}
+
+/* IMAGE (FIXED - NO CROPPING) */
+.project-image {
+  width: 100%;
+  max-width: 240px;
+
+  height: auto;          /* 🔥 key fix */
+  max-height: 200px;     /* keeps layout clean */
+
+  object-fit: contain;   /* prevents cropping */
+
+  display: block;
+  margin: 0 auto 1rem;
+
+  border-radius: 8px;
+}
+
+/* TITLE */
+.project h2 {
+  transition: color 0.2s ease;
+  text-align: center;
+}
+
+.project h2:hover {
+  text-decoration: underline;
+}
+
+/* STACK / TEXT */
+.project p {
+  text-align: center;
+}
+
+.project-tech-chips {
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+/* EXPANDABLE DETAILS */
+.project-details {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.35s ease, opacity 0.25s ease;
+}
+
+.project-details-open {
+  max-height: 300px;
+  opacity: 1;
+}
+
+.project-toggle {
+  background: none;
+  border: 1px solid rgba(80, 0, 202, 0.4);
+  border-radius: 20px;
+  padding: 6px 16px;
+  margin-top: 0.75rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+
+  &:hover {
+    background: rgba(80, 0, 202, 0.12);
+    border-color: #5000ca;
+  }
+
+  &:active {
+    transform: scale(0.96);
+  }
+}
+
+/* ZOOM EFFECT */
+.zoom {
+  transition: transform 0.2s ease;
+}
+
+.zoom:hover {
+  transform: scale(1.03);
+}
+
+/* MOBILE */
+@media (max-width: 700px) {
+  .projects-container {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .projects-container .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .projects-container .projects-grid .project {
+    padding-bottom: 5%;
+  }
+}

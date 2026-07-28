@@ -1,0 +1,363 @@
+html {
+    scroll-behavior: smooth;
+}
+
+.about-section {
+    display: flex;
+    gap: 30px;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    padding: 0px 15%;
+    min-height: 750px;
+    background-image:
+        linear-gradient(to right, rgba(13, 17, 22, 0.85) 0%, rgba(13, 17, 22, 0.55) 50%, rgba(13, 17, 22, 0.1) 100%),
+        url("../images/bg-dark.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.about-section .content {
+    text-align: left;
+    z-index: 2;
+
+    .social_icons {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        color: white;
+
+        svg {
+            font-size: 1.8em;
+        }
+    }
+
+    .mobile_social_icons {
+        display: none;
+    }
+
+    p {
+        font-size: 1.5em;
+        margin-block-start: 0px;
+        margin-block-end: 0px;
+    }
+
+    h1 {
+        font-size: 3.2em;
+        margin-block-start: 0px;
+        margin-block-end: 0px;
+    }
+}
+
+@keyframes wordSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes subtitleFadeOut {
+    to {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+}
+
+.animated-subtitle {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.28em;
+    align-items: baseline;
+    font-size: 1.26rem;
+    font-family: "JetBrains Mono", monospace;
+
+    min-height: 1.8em;
+
+    .word {
+        display: inline-block;
+        opacity: 0;
+        animation: wordSlideIn 0.35s ease forwards;
+    }
+
+    &.fading {
+        animation: subtitleFadeOut 0.4s ease forwards;
+    }
+}
+
+@keyframes floatProfile {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-10px); }
+}
+
+.about-section .image-wrapper {
+    z-index: 2;
+    img {
+        width: 180px;
+        border-radius: 50%;
+        animation: floatProfile 5s ease-in-out infinite;
+        box-shadow: 0 8px 32px rgba(80, 0, 202, 0.35);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    &:hover img {
+        transform: translateY(-6px) scale(1.02);
+        box-shadow: 0 14px 38px rgba(80, 0, 202, 0.42);
+    }
+}
+
+.about p {
+    text-align: center;
+    padding-top: 30%;
+    padding-bottom: 30%;
+}
+
+.resume-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 1.2rem;
+    padding: 0.55rem 1.3rem;
+    border: 2px solid white;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+    color: white !important;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Un-nested for safe compilation across all React/Webpack setups */
+.resume-btn:hover,
+.resume-btn:focus-visible {
+    background-color: white !important;
+    color: #0d1116 !important;
+    cursor: pointer;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+    outline: none;
+}
+
+.resume-btn svg {
+    font-size: 1.1rem;
+    fill: currentColor; /* Ensures the icon color changes dynamically with the text color on hover */
+}
+
+.who-am-i {
+    width: 100%;
+    padding: 5% 15%;
+    box-sizing: border-box;
+
+    .who-am-i-content {
+        max-width: 820px;
+
+        h1 {
+            margin-bottom: 1.5rem;
+        }
+
+        p {
+            font-size: 1.3rem;
+            line-height: 1.85;
+            opacity: 0.88;
+            margin-bottom: 1rem;
+        }
+    }
+}
+
+.tech-stack {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+
+    .tech-stack-label {
+        font-size: 1.25rem;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+        text-transform: none;
+        opacity: 1;
+        font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+        color: inherit;
+        margin-bottom: 0.2rem;
+    }
+
+    /* Responsive chip grid */
+    .tech-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.45rem;
+        margin-top: 0.3rem;
+    }
+
+    /* Optional category boxes (if used elsewhere) */
+    .tech-categories-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.65rem;
+        width: 100%;
+    }
+
+    .tech-category-box {
+        background: rgba(255,255,255,0.02);
+        border: 1px solid rgba(255,255,255,0.04);
+        border-radius: 12px;
+        padding: 0.8rem 0.85rem 0.9rem;
+        transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+    }
+
+    .tech-category-box:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 24px rgba(15, 20, 30, 0.24);
+        border-color: rgba(80, 0, 202, 0.22);
+        background: rgba(255, 255, 255, 0.035);
+    }
+
+    .tech-category-box h3 {
+        font-size: 1.05rem;
+        margin: 0 0 0.55rem;
+        color: inherit;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+    }
+}
+
+@keyframes chipFadeIn {
+    from { opacity: 0; transform: translateY(8px) scale(0.995); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.tech-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    font-size: 0.95rem;
+    padding: 0.4rem 0.7rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.0);
+    background: rgba(255,255,255,0.03);
+    color: rgba(255,255,255,0.94);
+    font-family: inherit;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.16);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+    opacity: 0;
+    animation: chipFadeIn 0.45s ease forwards;
+}
+
+.tech-chip:hover,
+.tech-chip:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(15,20,30,0.28);
+    background: rgba(80,0,202,0.08);
+    border-color: rgba(80,0,202,0.18);
+    outline: none;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .tech-chip,
+    .resume-btn,
+    .tech-category-box,
+    .about-section .image-wrapper img {
+        animation: none;
+        transition: none;
+    }
+}
+
+
+@media screen {
+    @media (max-width: 567px) {
+        .nav-left{
+            padding-top: 20px;
+            float:left;
+        }
+
+        .nav-left img {
+            height: 35px
+        }
+
+        .nav-right {
+            float:right;
+        }
+
+        .nav-right li {
+            padding: 10px 15px;
+            list-style:none;
+            font-size:13px;
+            color:white;
+            width: 10%;
+        }
+
+        .nav-right ul {
+            list-style-type: none;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body {
+            width: 100%;
+        }
+
+        .about {
+            padding-left: 5%;
+            padding-right: 5%;
+            font-size: 12px;
+        }
+    }
+
+    @media (max-width:768px) {
+        .about-section h1 {
+            font-size: 2.4em !important;
+            text-align: left;
+        }
+
+        .about-section p {
+            text-align: left;
+        }
+
+        .container {
+            display: initial;
+        }
+
+        .social_icons {
+            display: none !important;
+        }
+
+        .mobile_social_icons {
+            padding-top: 10px;
+            display: flex !important;
+            flex-direction: row;
+            gap: 10px;
+            color: white;
+    
+            svg {
+                font-size: 1.8em;
+            }
+        }
+
+        .about-section {
+            padding-top: 150px;
+            display: block;
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        .about-section .content {
+            width: 90%;
+            padding-left: 5%;
+            padding-right: 5%;
+            padding-bottom: 5%;
+        }
+
+        .about-section .image-wrapper {
+            padding-left: 5%;
+            width: 100%;
+        }
+    }
+}
